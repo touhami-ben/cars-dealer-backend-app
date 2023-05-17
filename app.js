@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const carsController = require("./controllers/carsController.js")
 
 
 //CONFIG
@@ -13,7 +14,11 @@ app.use(express.json());
 //routes
 
 app.get("/", (req, res) => {
-    res.send("Welcome to Name cars dealer")
+    res.send("Welcome to Atlantic cars dealer")
 });
+app.use("/cars", carsController);
+app.get("*", (req, res) => {
+    res.status(404).send("Page not found")
+})
 
 module.exports = app;
