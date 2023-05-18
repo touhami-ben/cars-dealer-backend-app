@@ -71,6 +71,6 @@ module.exports = {
     getAllCars,
     getCar,
     createCar,
-    // deleteCar,
-    // updateCar  
+    deleteCar,
+    updateCar  
  };

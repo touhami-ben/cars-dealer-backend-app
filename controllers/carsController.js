@@ -4,8 +4,8 @@ const {
      getAllCars,
     getCar,
     createCar,
-    // deleteCar,
-    // updateCar
+    deleteCar,
+    updateCar
 } = require("../queries/cars.js")
 
 
