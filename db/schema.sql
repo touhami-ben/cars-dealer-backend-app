@@ -9,7 +9,7 @@ CREATE TABLE cars (
     name TEXT NOT NULL,
     image_url TEXT,
     price DECIMAL(10,2) NOT NULL CHECK (price >= 0),
-    model TEXT,
     make TEXT,
-    is_new BOOLEAN DEFAULT true
+    condition TEXT,
+    is_available BOOLEAN DEFAULT true
 );
