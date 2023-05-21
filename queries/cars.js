@@ -26,14 +26,15 @@ const getCar = async (id) => {
 const createCar = async (car) => {
     try {
         const newCar = await db.one(
-            "INSERT INTO cars (name, image_url, price, model, make, is_new) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
+            "INSERT INTO cars (name, image_url, price, make, condition, is_available, color) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *",
             [
                 car.name,
                 car.image_url,
                 car.price,
-                car.model,
                 car.make,
-                car.is_new,
+                car.condition,
+                car.is_available,
+                car.color
             ]
         );
         return { result: newCar };
@@ -57,8 +58,8 @@ const deleteCar = async (id) => {
 const updateCar = async (id, car) => {
     try {
         const result = await db.one(
-            "UPDATE cars SET (name=$1, image_url=$2, price=$3, model=$4, make=$5, is_new=$6) WHERE id==$7 RETURNING *",
-            [car.name, car.image_url, car.price, car.model, car.make, car.is_new, id]
+            "UPDATE cars SET (name=$1, image_url=$2, price=$3, make=$4, condition=$5, is_available=$6, color=$7) WHERE id=$8 RETURNING *",
+            [car.name, car.image_url, car.price, car.make, car.condition, car.is_available, color, id]
         );
         return { result };
 

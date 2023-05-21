@@ -8,8 +8,10 @@ CREATE TABLE cars (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
     image_url TEXT,
-    price DECIMAL(10,2) NOT NULL CHECK (price >= 0),
+    price  INT NOT NULL DEFAULT 0,
     make TEXT,
     condition TEXT,
-    is_available BOOLEAN DEFAULT true
+    is_available BOOLEAN DEFAULT true,
+    color TEXT
+
 );

@@ -12,7 +12,7 @@ const {
 //index
 cars.get("/", async(req, res) => {
     const allCars = await getAllCars();
-    if (allCars[0]) {
+    if (allCars) {
     res.status(200).json(allCars);
     }else {
         res.status(500).json({error: "Server Error"});
