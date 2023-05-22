@@ -8,6 +8,7 @@ const carSchema = Joi.object({
     make: Joi.string().allow("").optional(),
     condition: Joi.string().allow("").optional(),
     is_available: Joi.boolean().optional(),
+    color: Joi.string().optional(),
 });
 
 module.exports = createValidator(carSchema);

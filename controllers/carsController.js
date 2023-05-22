@@ -6,16 +6,19 @@ const {
     createCar,
     deleteCar,
     updateCar
-} = require("../queries/cars.js")
+} = require("../queries/cars.js");
+const validateCar = require("../validations/validateCar.js");
 
 
 //index
-cars.get("/", async(req, res) => {
+cars.get("/", async (req, res) => {
+  
     const allCars = await getAllCars();
     if (allCars) {
     res.status(200).json(allCars);
     }else {
-        res.status(500).json({error: "Server Error"});
+      console.log('calling')
+        res.status(505).json({error: "Server internal Error"});
     }
 });
 //Show 
@@ -35,7 +38,7 @@ cars.get("/:id", async (req, res) => {
 
     
 //CREATE
-cars.post("/", async (req, res) => {
+cars.post("/", validateCar, async (req, res) => {
     const { error, result} = await createCar (req.body);
     if (error) {
         res.status(500).json({error: "Server Error"});
@@ -44,7 +47,7 @@ cars.post("/", async (req, res) => {
     }
 });
 
-// delete
+// // delete
 cars.delete("/:id", async (req, res) => {
     const { id } = req.params;
     const { error, result } = await deleteCar(id);
@@ -55,8 +58,8 @@ cars.delete("/:id", async (req, res) => {
     }
   });
 
-  //update
-  cars.put("/:id", async (req, res) => {
+  // //update
+  cars.put("/:id", validateCar, async (req, res) => {
     const { id } = req.params;
     const { error, result } = await updateCar(id, req.body);
     if (error) {
