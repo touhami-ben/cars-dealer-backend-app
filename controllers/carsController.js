@@ -17,7 +17,6 @@ cars.get("/", async (req, res) => {
     if (allCars) {
     res.status(200).json(allCars);
     }else {
-      console.log('calling')
         res.status(505).json({error: "Server internal Error"});
     }
 });
@@ -33,7 +32,6 @@ cars.get("/:id", async (req, res) => {
     } else {
         res.status(200).json(result);
     }
-    // console.log(result)
 });
 
     
@@ -67,7 +65,6 @@ cars.delete("/:id", async (req, res) => {
     } else {
       res.status(200).json(result);
     }
-    console.log(result)
   });
   
 
